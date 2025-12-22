@@ -114,6 +114,10 @@ function removeMovieFromList(id, buttonEl) {
     }
     
     updateButton(buttonEl, false);
+
+    if(watchlist) {
+        getWatchlist();
+    }
 }
 
 function updateButton(button, isInWatchlist) {
@@ -145,6 +149,9 @@ async function getWatchlist() {
     if(watchlist.length) {
         const movieResults = await getMoviesInfos(watchlist);
         displayResults(movieResults);
+    } else {
+        document.getElementById('default-content').style.display = 'flex';
+        document.getElementById('movies-list').innerHTML = '';
     }
 }
 
