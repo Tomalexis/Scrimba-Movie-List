@@ -18,7 +18,7 @@ form?.addEventListener('submit', async(e) => {
 });
 
 async function getMoviesID(searchQuery) {
-    await fetch(`https://www.omdbapi.com/?apikey=${key}&s=${searchQuery}`).then(res => res.json()).then(data => {
+    await fetch(`https://www.omdbapi.com/?apikey=${key}&s=${searchQuery}&type=movie`).then(res => res.json()).then(data => {
         if (data.Response === 'True') {
             const basicResult = data.Search;
             moviesId = basicResult.flat().map((movie) => {
